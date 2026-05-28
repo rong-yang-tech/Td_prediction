@@ -3,7 +3,7 @@ import pandas as pd
 # from ml_all_predict_nostack import ml
 from ml_all_predict_bayies import ml
 # 搜集重要官能团
-df_pre = pd.read_csv("C:/Users/888/Desktop/Td_predict/pre_smi_new_allrings3.csv")
+df_pre = pd.read_csv("./pre_smi_new_allrings3.csv")
 df_pre_group =df_pre.loc[ :,'benzene_0no2_0nh2':'five_N2O1_4no2_4nh2']
 # df_pre = pd.read_csv("C:/Users/888/Desktop/Td/pre_smi_new_allrings00_no2nh2.csv")
 # df_pre_group =df_pre.loc[ :,'benzene_no_sub':'five_N3O1_NH2_NO2']
@@ -19,7 +19,7 @@ pre_value=[]
 for i, list in enumerate(results):
     print('**********',list,df_pre['con_rings'][i])
     cols_to_check = list
-    df = pd.read_csv('D:/smi_xyz/smil_to_xyz/ml_data13_rdk_allrings.csv')
+    df = pd.read_csv('./ml_data13_rdk_allrings.csv')
     # df = pd.read_csv('C:/Users/888/Desktop/Td/ml_data13_rdk_allrings00_no2nh2.csv')
 
     # # 额外统计预测分子中含有3个环以上的结构
