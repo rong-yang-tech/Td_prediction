@@ -1,7 +1,7 @@
 import pandas as pd
 # from ml_all_predict_22 import ml
-from ml_all_predict_nostack import ml
-# from ml_all_predict_bayies import ml
+# from ml_all_predict_nostack import ml
+from ml_all_predict_bayies import ml
 # 搜集重要官能团
 df_pre = pd.read_csv("C:/Users/888/Desktop/Td_predict/pre_smi_new_allrings3.csv")
 df_pre_group =df_pre.loc[ :,'benzene_0no2_0nh2':'five_N2O1_4no2_4nh2']
@@ -46,36 +46,15 @@ for i, list in enumerate(results):
         pre_smi_df = df_pre.drop(columns=drop_columns)
 
         # # 超参数搜索G rid search CV
-        test_list = ml(x, filtered_df["T"], 1,pre_smi_df,corr=0.1)
-        pre_value.append(test_list[8][i])
-        print('corr',0.1,'pre_value_new_smi',test_list[8][i])
-        print(pre_value)
+        # test_list = ml(x, filtered_df["T"], 1,pre_smi_df,corr=0.1)
+        # pre_value.append(test_list[8][i])
+        # print('corr',0.1,'pre_value_new_smi',test_list[8][i])
+        # print(pre_value)
 
-        # # 超参数搜索 beyies search
-        # test_list = ml(x, filtered_df["T"],  pre_smi_df, corr=0.1)
-        # pre_value.append(test_list[i])
-        # print('pre_value_new_smi', test_list[i])
-        # print('num',i, pre_value)
-
-
+        # 超参数搜索 beyies search
+        test_list = ml(x, filtered_df["T"],  pre_smi_df, corr=0.1)
+        pre_value.append(test_list[i])
+        print('pre_value_new_smi', test_list[i])
+        print('num',i, pre_value)
 
 
-
-
-# 官能团统计，环，硝基氨基环，N_NO2， count_3n
-
-# df = pd.read_csv('D:/smi_xyz/smil_to_xyz/ml_data13_rdk_allrings.csv')
-# # cols_to_check =['benzene_3no2_0nh2']
-# # cols_to_check = ['five_N2_1no2_0nh2', 'five_N3_0no2_0nh2',]
-# cols_to_check = ['six_N2_1no2_1nh2','five_N2_1no2_0nh2', 'N_NO2']
-# filtered_df = df[(df[cols_to_check] != 0).sum(axis=1) >=1]
-# # filtered_df = df[((df[cols_to_check] != 0).sum(axis=1) >= 1) | (df['con_rings']==2)]
-# drop_df= filtered_df.loc[:, 'benzene_0no2_0nh2':'five_N2O1_4no2_4nh2',]
-# drop_columns=drop_df.columns
-# print(list(drop_columns))
-#
-#
-# filtered_df=filtered_df.drop(columns=drop_columns)
-#
-# filtered_df.to_csv('ml_data13_rdk_147.csv')
-# print(filtered_df)
